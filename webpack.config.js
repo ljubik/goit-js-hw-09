@@ -29,6 +29,10 @@ module.exports = (env) =>
             use: ["babel-loader"], //для використання, треба npm i 
           },
           {
+            test: /\.html$/,
+            use: ["html-loader"],
+          },
+          {
             test: /\.(gif|png|jpe?g|svg)$/,//$ каже що неможе бути більше знаків після останнього
             use: [
               {
@@ -41,16 +45,12 @@ module.exports = (env) =>
             ],
           },
           {
-            test: /\.html$/,
-            use: ["html-loader"],
-          },
-          {
             test: /\.hbs$/,
             use: ["handlebars-loader"],
           },
         ],
-        // плагины применяются к результирующему бандлу
       },
+      // 4 плагины применяются к результирующему бандлу, їх треба обовязково імпортувати, лоадери ні
       plugins: [
         new CleanWebpackPlugin(),
         new FriendlyErrorsWebpackPlugin(),
